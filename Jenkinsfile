@@ -7,10 +7,14 @@ stages
   { steps {  git branch: 'master', url: 'https://github.com/prakashk0301/maven-project'  } }
 
   stage('code build')
-  { steps {  withMaven(jdk: 'LocalJDK', maven: 'local_maven_3.5') {
-      sh 'mvn clean package'                    // provide maven command
+  { steps {  withMaven(jdk: 'Java home', maven: 'Maven home') {
+      sh 'mvn clean package'                    
 
 } } }
+  
+  stage('create docker image from dockerfile')
+  { steps { sh 'docker build -t akashjava/final:v1 .'
+             sh 'docker images'} }
 
 }
 }
