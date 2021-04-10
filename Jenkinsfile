@@ -9,7 +9,15 @@ stages
   stage('code build')
   { steps withMaven(jdk: 'Java home', maven: 'Maven home') 
    {
-     { sh 'mvn clean package'}                    
+     { sh 'mvn clean package'}        
+     
+     stage('create docker image from dockerfile')
+  { steps { sh 'docker build -t akashjava/final:v1 . '
+             sh 'docker images'} }
+
+}
+}
+
 
 } } 
   
