@@ -7,7 +7,7 @@ stages
   { steps {  git branch: 'master', url: 'https://github.com/study24/maven-project'  } }
 
   stage('code build')
-  { steps {  withMaven(jdk: 'Java version', maven: 'Maven home') {
+  { steps {  withMaven(jdk: 'Java version', maven: 'maven_3_8_1') {
       sh 'mvn clean package'                    
 
 } } }
