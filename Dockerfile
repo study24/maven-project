@@ -1,6 +1,8 @@
-From openjdk
-Maintainer akash
-volume /temp
-workdir /var/lib/jenkins/workspace//Demo_Job4/target/webpp/war/
-copy app.war .
-run sh touch/app
+FROM openjdk
+MAINTAINER prakash
+VOLUME /tmp
+ARG JAR_FILE_NAME
+COPY $JAR_FILE_NAME app.jar
+RUN sh -c 'touch /app.jar'
+ENV JAVA_OPTS=""
+CMD [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
