@@ -14,12 +14,10 @@ stages
   }
   }
   
-  stage ('create docker image from dockerfile')
-  { steps { sh 'docker build -t akashjava/final:v1 .'
-             sh 'docker images'} }
+}
+}
+  
 
-}
-}
 
 
 
