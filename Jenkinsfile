@@ -25,7 +25,8 @@ stages
     steps {
   
       copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'complete-cicd', selector: lastSuccessful()
-      
+    }
+  } 
       
       
       
