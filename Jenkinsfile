@@ -17,9 +17,28 @@ stages
       steps { archiveArtifacts artifacts: '**/*.war'}
 
      } 
-
-
   
+  
+  stage('Upload Artifact To Nexus')
+  {
+    
+    steps {
+  
+  nexusArtifactUploader artifacts: [[artifactId: 'webapp', classifier: '', file: 'target/webapp.war', type: 'war']], credentialsId: 'Nexus_id', groupId: 'prod', 
+                                            nexusUrl: '172.31.11.140:8081', nexusVersion: 'nexus3', protocol: 'http', 
+                                           repository: 'maven-repo', version: '$BUILD_ID'
+  
+   
+
+    }
+  
+
+
+
+
+
+
+
 
 }
 }  
