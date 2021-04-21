@@ -28,7 +28,7 @@ stages
                                             nexusUrl: '172.31.11.140:8081', nexusVersion: 'nexus3', protocol: 'http', 
                                            repository: 'maven-repo', version: '$BUILD_ID'
   
-   
+    }
 
     }
   
