@@ -19,16 +19,18 @@ stages
      } 
   
   
-  stage('Upload Artifact To Nexus')
+  stage('copy Artifact from Nexus')
   {
     
     steps {
   
-nexusArtifactUploader artifacts: [[artifactId: '$BUILD', classifier: '', file: 'target/webapp.war', type: 'war']], credentialsId: 'Nexus_id', groupId: 'Prod', nexusUrl: '172.31.11.140:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-repo', version: '$BUILD'
-  
+      copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'complete-cicd', selector: lastSuccessful()
+      
+      
     }
-
-    }
+  }
+    
+    
   
 
 
