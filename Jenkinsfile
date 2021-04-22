@@ -34,7 +34,7 @@ stages
       stage('upload to nexus')
       {
         steps { 
-        nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: 'target/Maven Projec', type: 'war']], 
+        nexusArtifactUploader artifacts: [[artifactId: 'maven-project', classifier: '', file: 'target/Maven Project', type: 'war']], 
           credentialsId: 'nexus-cred', 
           groupId: 'prod', 
           nexusUrl: '3.65.14.56:8081', 
