@@ -18,15 +18,7 @@ stages
 
      } 
   
-  
-  stage('copy Artifact from Nexus')
-  {
-    
-    steps {
-  
-      copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'complete-cicd', selector: lastSuccessful()
-    }
-  } 
+
       
       
       
