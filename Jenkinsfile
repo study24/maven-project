@@ -14,6 +14,16 @@ stages
     
   } } }
   
+  
+  stage('Archive Artifacts')
+  {
+    steps { 
+      archiveArtifacts allowEmptyArchive: true, artifacts: '**/*.war', followSymlinks: false, onlyIfSuccessful: true 
+      
+          }
+  } 
+    
+  
     
   
 
