@@ -24,17 +24,16 @@ stages
           }
   } 
   
-  stage('Code Analysis SonaQube')
-  {
-    steps{ 
-  
-       withSonarQubeEnv(credentialsId: 'sonarqube-id', installationName: 'sonar-pro') { // You can override the credential to be used
-      sh 'mvn clean package sonar:sonar'
-      
+  stage('build && SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                    // Optionally use a Maven environment you've configured already
+                    withMaven(maven:'Maven 7.1') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                }
+            }
         }
-                                    }
-    
-  }
   
   
   
