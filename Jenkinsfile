@@ -18,20 +18,7 @@ stages
 } } }
 	
 	
- stage('CODE ANALYSIS with SONARQUBE') {
-          
-		  environment {
-             scannerHome = tool 'sonar'
-          }
-
-          steps {
-           
-              withSonarQubeEnv('sonar') {
-                sh 'mvn clean package sonar:sonar'
-              }
-              
-            }	
- }
+ 
 
 	
 	
