@@ -19,7 +19,7 @@ stages
   stage('Code Analysis')
   {
     steps{ 
-      withSonarQubeEnv('sonar-pro') 
+      withSonarQubeEnv('sonar') 
                   
                      {
                        sh 'mvn sonar:sonar'
