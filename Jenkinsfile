@@ -1,20 +1,37 @@
+pipeline
+{
+agent any
+stages
+{
+  stage('scm checkout')
+  { steps {  git branch: 'master', url: 'https://github.com/prakashk0301/maven-project'  } }
 
-node  {
+  stage('code build')
+  { steps {  withMaven(jdk: 'LocalJDK', maven: 'local_maven_3.5') {
+      sh 'mvn clean package'                    // provide maven command
 
-   stage('SCM') {
-	  git 'https://github.com/study24/maven-project'
-   }
-   
-   stage ('build the packages') {
-	  sh 'mvn package'
-   }
-   
-   stage('SonarQube analysis') {
-    // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
-    withSonarQubeEnv('sonar') {
-      // requires SonarQube Scanner for Maven 3.2+
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-    }
-  }
+} } }
+	
+	
+ stage('CODE ANALYSIS with SONARQUBE') {
+          
+		  environment {
+             scannerHome = tool 'sonar'
+          }
 
+          steps {
+           
+              withSonarQubeEnv('sonar') {
+                sh 'mvn clean package sonar:sonar'
+              }
+              
+            }	
+
+	
+	
+	
+	
+	
+	
 }
+}	
