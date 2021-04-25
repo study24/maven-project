@@ -1,5 +1,5 @@
 
-node (MAVEN) {
+node  {
 
    stage('SCM') {
 	  git 'https://github.com/study24/maven-project'
