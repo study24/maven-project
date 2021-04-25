@@ -11,9 +11,29 @@ stages
   stage('Build Code')
   {
     steps{ 
-      sh 'mvn clean package sonar:sonar'
+      sh 'mvn clean package'
     }
   }  
+  
+  
+  stage('Code Analysis')
+  {
+    steps{ 
+      withSonarQubeEnv('sonar-pro') 
+                  
+                     {
+                       sh 'mvn sonar:sonar'
+    }
+  }  
+  }
+   
+  
+  
+  
+  
+  
+  
+  
    
           
   stage('Archiving Artifacts')
