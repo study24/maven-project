@@ -26,7 +26,7 @@ stages
   
   stage('build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                withSonarQubeEnv('sonar-pro') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'Maven 7.1') {
                         sh 'mvn clean package sonar:sonar'
