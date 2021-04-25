@@ -24,7 +24,7 @@ stages
 		
 		steps {
             withSonarQubeEnv('sonar') {
-               sh 'mvn clean package sonar:sonar'
+               sh 'mvn clean install sonar:sonar -Dsonar.java.binaries=**/*.java'
             }
 		}
 	}
