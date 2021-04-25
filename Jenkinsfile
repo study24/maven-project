@@ -1,4 +1,5 @@
-node {
+
+node (MAVEN) {
 
    stage('SCM') {
 	  git 'https://github.com/study24/maven-project'
@@ -12,7 +13,7 @@ node {
     // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
     withSonarQubeEnv('sonar') {
       // requires SonarQube Scanner for Maven 3.2+
-      sh 'mvn clean install sonar:sonar -Dsonar.java.binaries=**/*.java' 
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
     }
   }
 
