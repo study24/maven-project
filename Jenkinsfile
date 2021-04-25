@@ -11,7 +11,7 @@ stages
   stage('Build Code')
   {
     steps{ 
-      sh 'mvn clean package'
+      sh 'mvn clean package sonar:sonar'
     }
   }  
    
@@ -24,17 +24,7 @@ stages
           }
   } 
   
-  stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonar-pro') {
-                    // Optionally use a Maven environment you've configured already
-                    withMaven(maven:'Maven 7.1') {
-                        sh 'mvn clean package sonar:sonar'
-                    }
-                }
-            }
-        }
-  
+
   
   
    
