@@ -28,8 +28,9 @@ stages
             withSonarQubeEnv('sonar') {
                sh 'mvn clean package sonar:sonar'
             }
-	
-	
+		}
+	}
+
  
 
 	
