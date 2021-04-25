@@ -5,9 +5,10 @@ stages
 {
   stage('scm checkout')
   { steps 
-       {  git branch: 'master', url: 'https://github.com/study24/maven-project'  } }
+       {  git branch: 'master', url: 'https://github.com/study24/maven-project'  } 
+  }
   
-  Stage('Build Code')
+  stage('Build Code')
   {
     steps{ 
       sh 'mvn clean package'
@@ -23,7 +24,7 @@ stages
           }
   } 
   
-  stages('Code Analysis SonaQube')
+  stage('Code Analysis SonaQube')
   {
     steps{ 
   
@@ -34,6 +35,7 @@ stages
       
         }
                                     }
+    
   }
   
   
