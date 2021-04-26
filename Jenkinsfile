@@ -18,8 +18,7 @@ stages
 			script {
             withSonarQubeEnv('sonar') {
                sh "mvn sonar:sonar"
-		      -Dsonar.host.url=http://18.195.85.177:9000 
-                      -Dsonar.login=b5acbbb7bb27c10209c8ed85326aac4587af0408
+		     
             }
 				timepot(time:1, unit: 'HOURS') {
 					def qg = waitForQualityGates()
