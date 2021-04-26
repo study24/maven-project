@@ -1,5 +1,5 @@
  pipeline {
-  agent {
+  agent any {
     docker {
       image 'maven'
       arg '-v &HOME/.m2/root/.m2'
