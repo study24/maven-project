@@ -1,22 +1,16 @@
-pipeline {
-  agent any
-  stages {
-    
-    stage('Sonarqube') 
-    {
-    environment {
-        scannerHome = tool 'sonarlocal'
-    }
-    steps {
-        withSonarQubeEnv('sonar') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
-}
-  
+ pipeline
+{
+agent any
+stages
+{
+  stage('scm checkout')
+  { steps {  git branch: 'master', url: 'https://github.com/study24/maven-project'  } }
+
+  stage('code build')
+  { steps {  withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
+      sh 'mvn clean package sonar:sonar'                    // provide maven command
+
+} } }
   
   
   }
