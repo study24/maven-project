@@ -7,8 +7,10 @@ stages
   { steps {  git branch: 'master', url: 'https://github.com/study24/maven-project'  } }
 
   stage('code build')
-  { steps {  withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
-      sh 'mvn clean package sonar:sonar'                    // provide maven command
+ {
+  steps{
+ withSonarQubeEnv('sonar') {
+  sh 'mvn sonar:sonar'
 
 } } }
   
