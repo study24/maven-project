@@ -8,24 +8,29 @@ stages
    {  git branch: 'master', url: 'https://github.com/study24/maven-project'  } 
   }
 
-  stage('code build')
-  { steps 
-   {  withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') 
-    
-    {
-      sh 'mvn clean package'                    // provide maven command
-
-} } }
-	
+ 
 	
 	stage('CODE ANALYSIS with SONARQUBE') {
           
 	
 		
 		steps {
+			script {
             withSonarQubeEnv('sonar') {
-               sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+               sh "mvn sonar:sonar"
+		      -Dsonar.host.url=http://18.195.85.177:9000 
+                      -Dsonar.login=b5acbbb7bb27c10209c8ed85326aac4587af0408
             }
+				timepot(time:1, unit: 'HOURS') {
+					def qg = waitForQualityGates()
+					if (qg.status != 'ok') {
+						error "Pipeline aborted due to quality gate failure: $(qg.status)"
+					}
+					sh "mvn clean install"
+				
+	}
+			}
+			
 		}
 	}
 
