@@ -11,14 +11,16 @@ pipeline {
 
       steps {
        
-           withSonarQubeEnv(sonar) {
+          withSonarQubeEnv('sonar') {
+         withMaven(maven : 'localsonar') {
           
-           mvn sonar:sonar 
+           sh 'mvn clean package sonar:sonar'
  
 
           }
         }
       }
+    }
     
 
   }
