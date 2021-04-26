@@ -1,10 +1,6 @@
  pipeline {
-  agent any {
-    docker {
-      image 'maven'
-      arg '-v &HOME/.m2/root/.m2'
-    }
-  }
+  agent any 
+    
   stages {
     stage('code analysis') {
       steps {
