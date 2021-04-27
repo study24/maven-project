@@ -241,12 +241,7 @@
         <scope>test</scope>
       </dependency>
              
-     <dependency>
-      <groupId>org.sonarsource.scanner.maven</groupId>
-      <artifactId>sonar-maven-plugin</artifactId>
-      <version>4.2.0.1873</version>
-      <type>pom</type>
-     </dependency>       
+           
 
       <dependency>
         <groupId>org.mockito</groupId>
