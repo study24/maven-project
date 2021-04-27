@@ -11,7 +11,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'MAVEN_HOME') {
+                withMaven(maven : 'MAVEN_HOME', jdk: 'JAVA_HOME') {
                     sh 'mvn clean compile'
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'MAVEN_HOME') {
+                withMaven(maven : 'MAVEN_HOME', jdk: 'JAVA_HOME') {
                     sh 'mvn test'
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
 
         stage ('install Stage') {
             steps {
-                withMaven(maven : 'MAVEN_HOME') {
+                withMaven(maven : 'MAVEN_HOME', jdk: 'JAVA_HOME') {
                     sh 'mvn install'
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
         stage ('build && SonarQube analysis') {
             steps {
 		withSonarQubeEnv('sonar') {
-			withMaven(maven : 'MAVEN_HOME') {
+			withMaven(maven : 'MAVEN_HOME', jdk: 'JAVA_HOME') {
                        
 			sh 'mvn clean package sonar:sonar'
  
