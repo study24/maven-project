@@ -26,6 +26,7 @@
 <properties>
 <sonar.host.url>
 http://18.157.84.73:9000
+         <sonar.login>3c29ea383ff3538a29902cb93421785ac36cf1f6</sonar.login>
 </sonar.host.url>
 </properties>
 </profile>
