@@ -1,10 +1,10 @@
 node {
   stage('SCM') {
-    git 'https://github.com/study24/maven-project.git'
+    git 'https://github.com/study24/maven-project'
   }
   stage('SonarQube analysis') {
-    withSonarQubeEnv(credentialsId: 'token', installationName: 'sonarqubetm') { // You can override the credential to be used
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:4.6.0.2311:sonar'
-    }
+    withSonarQubeEnv('sonarqubetm') {
+      sh 'mvn clean package sonar:sonar'
+    } // submitted SonarQube taskId is automatically attached to the pipeline context
   }
 }
