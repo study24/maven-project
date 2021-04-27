@@ -15,6 +15,22 @@
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     <jacoco.version>0.8.2</jacoco.version>       
   </properties>
+         
+         
+<profiles>
+<profile>
+<id>sonar</id>
+<activation>
+<activeByDefault>true</activeByDefault>
+</activation>
+<properties>
+<sonar.host.url>
+http://18.157.84.73:9000
+</sonar.host.url>
+</properties>
+</profile>
+</profiles>
+
 
   <modules>
     <module>server</module>
@@ -240,6 +256,12 @@
         <version>1.2.1</version>
         <scope>test</scope>
       </dependency>
+             
+             <dependency>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>3.8.0.2131</version>
+</dependency>
              
            
 
