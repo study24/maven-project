@@ -1,24 +1,47 @@
- pipeline {
-  agent any 
-    
-  stages {
-    stage('code analysis') {
-      steps {
-        script {
-          withSonarQubeEnv('sonar') {
-            sh "mvn sonar:sonar"
-          }
-          timeout(time: 1, unit: 'HOURS') {
-            def qg = waitForQualityGate()
-            if (qg.status != 'ok') {
-             error "pipeline aborted due to quality gate failure: ${qg.status}"
-              
-            
-            }
-          }
-          sh "mvn clean install"
+pipeline {
+    agent any
+
+
+    stages 
+	    { stage('SCM Checkout'){
+          git 'https://github.com/study24/maven-project.git'
         }
-      }
     }
-  }
+	{
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'MAVEN_HOME') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'MAVEN_HOME') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('install Stage') {
+            steps {
+                withMaven(maven : 'MAVEN_HOME') {
+                    sh 'mvn install'
+                }
+            }
+        }
+
+        stage ('build && SonarQube analysis') {
+            steps {
+		withSonarQubeEnv('sonar') {
+                    withMaven(maven : MAVEN_HOME') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+		}	
+            }
+        }
 }
