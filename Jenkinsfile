@@ -42,7 +42,7 @@ stage("Quality Gate") {
 
 
 
-}
+
 }
   
 
