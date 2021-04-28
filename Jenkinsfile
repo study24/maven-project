@@ -26,13 +26,11 @@ stage("Quality Gate") {
       error "Pipeline aborted due to quality gate failure: ${qg.status}"
      }
   
-    else {
-      print "Pipeline Executed Successfully: ${qg.status}"
-    }
+    
     }
   }
   
-  }
+  
   
   
 }
