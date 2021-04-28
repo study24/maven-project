@@ -18,9 +18,8 @@ stage("Quality Gate"){
     }
   }
   
-  
-}
+  }
 
-}
+
 
 
