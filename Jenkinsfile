@@ -28,6 +28,9 @@ stage("Quality Gate"){
   
     else {
       print "Pipeline Executed Successfully: ${qg.status}"
+    }
+  }
+  
   }
   
   }
