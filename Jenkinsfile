@@ -16,7 +16,11 @@ stage("Quality Gate"){
     if (qg.status != 'OK') {
       error "Pipeline aborted due to quality gate failure: ${qg.status}"
     }
-  }
-     else
+    else {
       print "Pipeline Executed Successfully: ${qg.status}"
+      
+    }
+  }
+}
+}
 
