@@ -21,9 +21,9 @@ pipeline {
     stage('code Analysis') {
     steps {
 
-      sh {
+      sh 
         'mvn checkstyle:checkstyle'
-      }
+      
     }
     }
 
