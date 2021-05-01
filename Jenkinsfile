@@ -17,7 +17,7 @@ pipeline {
       }
     }
 
-    stage('code Analysis')
+    stage('code Analysis') {
     steps {
 
       sh {
