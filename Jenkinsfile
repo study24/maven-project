@@ -11,6 +11,7 @@ pipeline {
       steps {
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME')
       }
+       
 
       {
         sh 'mvn package'
@@ -23,6 +24,7 @@ pipeline {
       sh {
         'mvn checkstyle:checkstyle'
       }
+    }
     }
 
     stage('SonarQube analysis') {
