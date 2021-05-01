@@ -21,10 +21,8 @@ pipeline {
     stage('code Analysis') {
     steps {
 
-      sh 
-        'mvn checkstyle:checkstyle'
-      
-    }
+      sh 'mvn checkstyle:checkstyle'
+      }
     }
 
     stage('SonarQube analysis') {
