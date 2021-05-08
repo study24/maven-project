@@ -8,7 +8,7 @@ node
 
    stage('CODE BUILD')
  {
-   def mavenHome = tool name : "MAVEN_HOME"
+   def mavenHome = tool name : "sonarlocal"
    sh "${mavenHome}/bin/mvn sonar:sonar"
 
  }
