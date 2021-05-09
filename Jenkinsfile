@@ -23,4 +23,14 @@ node
 
  }
    
+   
+      stage('NexusUploadArtifact')
+ {
+   
+   sh "${mavenHome}/bin/mvn deploy"
+
+ }
+   
+   
+   
 }
