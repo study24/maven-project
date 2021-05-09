@@ -14,7 +14,9 @@
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     <jacoco.version>0.8.2</jacoco.version> 
-    <sonar.host.url>http://18.157.160.147:9000/</sonar.host.url>       
+    <sonar.host.url>http://18.157.160.147:9000/</sonar.host.url>  
+    <sonar.login>admin</sonar.login>
+    <sonar.password>admin1234</sonar.password>
   </properties>
 
   <modules>
