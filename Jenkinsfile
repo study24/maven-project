@@ -15,4 +15,12 @@ node
 
  }
    
+   
+     stage('SonarQube Report')
+ {
+   
+   sh "${mavenHome}/bin/mvn sonar:sonar"
+
+ }
+   
 }
