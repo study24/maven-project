@@ -1,7 +1,7 @@
 node
 {
    
-   def mavenHome = tool name : "SonarLocal"
+   def mavenHome = tool name : "Maven3.8.1"
    stage('SCM CHECKOUT')
   {
    git branch: 'master', url: 'https://github.com/study24/maven-project'
@@ -11,7 +11,7 @@ node
    stage('CODE BUILD')
  {
    
-   sh "${SonarLocal}/bin/mvn sonar:sonar"
+   sh "${mavenHome}/bin/mvn sonar:sonar"
 
  }
    
